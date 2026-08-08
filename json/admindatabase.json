@@ -1,0 +1,10 @@
+{
+    "admin1":{
+        "username" : "rudravmahureadmin",
+        "password" : "rudrav"
+    },
+    "admin2":{
+        "username" : "json",
+        "password" : "json_com"
+    }
+}
