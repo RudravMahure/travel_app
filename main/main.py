@@ -4,6 +4,8 @@ import sys
 
 from colorama import  Fore,Style,init
 from modules.loginsignup import searchadmin
+from modules.loginsignup import searchcustomer
+from modules.loginsignup import entry_of_new_customer
 
 parent_dir = os.path.abspath( os.path.join(os.path.dirname(__file__), "..") )
 #the above file while first find the location os current file using "os.path.dirname(__file__)" then it go on step up
@@ -27,19 +29,33 @@ try:
            print()
            user_name = str(input(Fore.CYAN+"Enter username:"))
            password = str(input(Fore.CYAN+"Enter password:"))
-           Style.RESET_ALL
+           print(Style.RESET_ALL)
            
-           check = searchadmin(user_name,password)
-           print(f"value of check :{check}")
+           checkuser = searchcustomer(user_name,password)
+           checkadmin = searchadmin(user_name,password)
+           
+           if(checkuser == True and checkadmin == False):
+               print("functionalities of customer")
+           elif(checkadmin == True and checkuser == False):
+               print("functionalies of admin")
+           else:
+               print(Fore.RED+f"Incorrect username or password \nusername doesnot exist")
+               print(Style.RESET_ALL)
+               
         case 2:
             print()
             user_name = str(input(Fore.CYAN+"Enter username:"))
             password = str(input(Fore.CYAN+"Enter password:"))
             repassword = str(input(Fore.CYAN+"ReEnter password:"))
-            Style.RESET_ALL
+            print(Style.RESET_ALL)
+            if(password==repassword):
+                entry_of_new_customer(user_name,password)
+            else:
+                print(Fore.RED+f"Password and reenter pasword does not match")
+                print(Style.RESET_ALL)
         case _:
             print(Fore.RED+"Enter proper input")
-            Style.RESET_ALL
+            print(Style.RESET_ALL)
 except ValueError as ve:
     print(Fore.RED+f"Error occur add login section")
     print(f"Exception details : {ve}")

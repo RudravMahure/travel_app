@@ -1,3 +1,14 @@
 {
-    
+    "custone": {
+        "username": "rudrav_mahure",
+        "password": "rudrav@1110"
+    },
+    "custtwo": {
+        "username": "customer",
+        "password": "cust"
+    },
+    "cust3": {
+        "username": "dpooja",
+        "password": "pooja03"
+    }
 }
