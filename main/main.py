@@ -6,6 +6,8 @@ from colorama import  Fore,Style,init
 from modules.loginsignup import searchadmin
 from modules.loginsignup import searchcustomer
 from modules.loginsignup import entry_of_new_customer
+from modules.functionalitiesofcustomer import customermethods
+from modules.functionalitiesofadmin import adminmethods
 
 parent_dir = os.path.abspath( os.path.join(os.path.dirname(__file__), "..") )
 #the above file while first find the location os current file using "os.path.dirname(__file__)" then it go on step up
@@ -36,11 +38,15 @@ try:
            
            if(checkuser == True and checkadmin == False):
                print("functionalities of customer")
+               customer_credintails = customermethods(user_name,password)
+               customer_credintails.functionality_of_customer()
            elif(checkadmin == True and checkuser == False):
-               print("functionalies of admin")
+               admin_credintails = adminmethods(user_name,password)
+               admin_credintails.functionality_of_admin()
            else:
                print(Fore.RED+f"Incorrect username or password \nusername doesnot exist")
                print(Style.RESET_ALL)
+            
                
         case 2:
             print()
