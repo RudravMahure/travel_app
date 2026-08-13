@@ -10,3 +10,6 @@ ADMIN_DATABASE = JSON_FOLDER / "admindatabase.json"
 
 #path of customerdatabase.json file
 CUSTOMER_DATABASE = JSON_FOLDER / "customerdatabase.json"
+
+#path of bus database
+BUSDATABASE = JSON_FOLDER / "busdatabase.json"

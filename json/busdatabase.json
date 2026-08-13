@@ -1,0 +1,20 @@
+{
+    "bus1": {
+        "id": 1,
+        "start": "nagpur",
+        "end": "pune",
+        "total_seats": 20
+    },
+    "bus2": {
+        "id": 42,
+        "start": "pune",
+        "end": "mumbai",
+        "total_seats": 23
+    },
+    "bus3": {
+        "id": 90,
+        "start": "mysore",
+        "end": "nagpur",
+        "total_seats": "20"
+    }
+}

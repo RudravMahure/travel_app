@@ -38,7 +38,7 @@ def searchadmin(username,password):
             #print(Fore.RED+"Incorrect username or username does not exists")
             print(Style.RESET_ALL)
             return False
-        elif(found_user == True):
+        elif(found_user == True and incorrect_password == False):
             #print(Fore.GREEN+f"WElcome to system")
             print(Style.RESET_ALL)
             return True
@@ -75,7 +75,7 @@ def searchcustomer(username,password):
             #print(Fore.RED+f"Incorrect username or username does not exist")
             print(Style.RESET_ALL)
             return False
-        elif(found_user == True):
+        elif(found_user == True and incorrect_password == False):
             #print(Fore.GREEN+f"Welcome to the system")
             print(Style.RESET_ALL)
             return True
