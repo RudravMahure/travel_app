@@ -13,3 +13,6 @@ CUSTOMER_DATABASE = JSON_FOLDER / "customerdatabase.json"
 
 #path of bus database
 BUSDATABASE = JSON_FOLDER / "busdatabase.json"
+
+#path for book ticket section
+BOOKTICKET = JSON_FOLDER / "bookticket.json"

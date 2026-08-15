@@ -6,6 +6,7 @@ import json
 
 from colorama import Fore,Style,init
 from config.config import BUSDATABASE
+from config.config import BOOKTICKET
 
 parent_dir = os.path.abspath( os.path.join(os.path.dirname(__file__), "..") )
 #the above file while first find the location os current file using "os.path.dirname(__file__)" then it go on step up
@@ -69,6 +70,7 @@ class adminmethods:
             start_point = str(input(Fore.CYAN+"Enter the starting point of bus:"))
             end_point = str(input("Enter the ending point of bus:"))
             total_seats = int(input("Enter total number of seats:"))
+            price = int(input("Enter the price of each seat:"))
             print(Style.RESET_ALL)
             
             start_point = start_point.lower()
@@ -88,7 +90,9 @@ class adminmethods:
                     "id" : bus_id,
                     "start" : start_point,
                     "end" : end_point,
-                    "total_seats" : total_seats
+                    "total_seats" : total_seats,
+                    "avaiable_seats" : total_seats,
+                    "price" : price
                 }   
                 #write into json file
                 with open(BUSDATABASE,"w") as file:
@@ -122,6 +126,8 @@ class adminmethods:
                     print(f"Starting point:{ bus_details["start"]}")
                     print(f"Ending point:{bus_details["end"]}")
                     print(f"Total seats:{bus_details["total_seats"]}")
+                    print(f"Avaiable seats:{bus_details["avaiable_seats"]}")
+                    print(f"The price of each seat:{bus_details["price"]}")
             else:
                 print(Fore.RED+"Json File does not found")
                 print(Style.RESET_ALL)
@@ -156,7 +162,9 @@ class adminmethods:
                             "id" : bus_dic[bus_dic_id]["id"],
                             "start" : bus_dic[bus_dic_id]["start"],
                             "end" : bus_dic[bus_dic_id]["end"],
-                            "total_seats" : bus_dic[bus_dic_id]["total_seats"]
+                            "total_seats" : bus_dic[bus_dic_id]["total_seats"],
+                            "avaiable_seats" : bus_dic_id["avaiable_seats"],
+                            "price" : bus_dic[bus_dic_id]["price"]
                         }
                         temp_dic_length = temp_dic_length + 1
                         
@@ -219,6 +227,27 @@ class adminmethods:
                 print(f"Exception details : {e}")
                 print(Style.RESET_ALL)
     
+    #total earning function
+    def total_earning(self):
+        
+        #all variables are declare here
+        v_total_earning = 0
+        
+        try:
+            with open(BOOKTICKET,"r") as file:
+                book_dic = json.load(file)
+            
+            for book_it in book_dic.values():
+                v_total_earning = v_total_earning + book_it["total_price"]
+            
+            print()
+            print(f"Total earning:{v_total_earning}")
+                
+        except Exception as e:
+            print(Fore.RED+"Exception occur at total earning section")
+            print(f"Exception details : {e}")
+            print(Style.RESET_ALL)
+    
     #match case
     def functionality_of_admin(self):
         end_loop = True #variable for loop iteration
@@ -251,6 +280,8 @@ class adminmethods:
                         print("1.Change starting point")
                         print("2.Change ending point")
                         print("3.Change total seats")
+                        print("4.Change price")
+                        print("5.Avaiable seats")
                         
                         choice = int(input("Enter your choice:"))
                         if(choice == 1):
@@ -261,7 +292,13 @@ class adminmethods:
                             updated_value = str(input("Enter new end location:"))
                         elif(choice == 3):
                             change_value = "total_seats"
-                            updated_value = str(input("Enter new total seats:"))
+                            updated_value = int(input("Enter new total seats:"))
+                        elif(choice == 4):
+                            change_value = "price"
+                            updated_value = int(input("Enter new price:"))
+                        elif(choice == 5):
+                            change_value = "avaiable_seats"
+                            updated_value = int(input("Enter new avaiable seats:"))
                         else:
                             print(Fore.RED+f"Enter proper input")
                             print(Style.RESET_ALL)
@@ -269,6 +306,7 @@ class adminmethods:
                         
                     case 4:
                         print("Total earning")
+                        self.total_earning()
                     case 5:
                         print("Show all bus")
                         self.__showbus()

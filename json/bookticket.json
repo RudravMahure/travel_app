@@ -1,0 +1,26 @@
+{
+    "book1": {
+        "username": "rudrav",
+        "id": 1,
+        "ticket_book": 2,
+        "start": "nagpur",
+        "end": "pune",
+        "total_price": 2000
+    },
+    "book2": {
+        "username": "customer",
+        "id": 1,
+        "ticket_book": 2,
+        "start": "nagpur",
+        "end": "pune",
+        "total_price": 2000
+    },
+    "book3": {
+        "username": "dpooja",
+        "id": 90,
+        "ticket_book": 1,
+        "start": "mysore",
+        "end": "nagpur",
+        "total_price": 899
+    }
+}
